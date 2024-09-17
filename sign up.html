@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Sign-Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            background: #fff;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signup-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid #007bff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .signup-container h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+
+        .signup-container label {
+            display: block;
+            margin-bottom: 0.75rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.7s forwards;
+        }
+
+        .signup-container input[type="text"],
+        .signup-container input[type="email"],
+        .signup-container input[type="password"],
+        .signup-container input[type="tel"],
+        .signup-container select {
+            width: 100%;
+            padding: 0.875rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            opacity: 0;
+            animation: fadeInUp 1s 0.9s forwards;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .flex-container input[type="tel"],
+        .flex-container input[type="text"],
+        .flex-container input[type="password"] {
+            width: 100%;
+        }
+
+        /* Stable Fancy Sign-Up button */
+        .signup-container button {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, #007bff, #00d4ff); /* Gradient */
+            color: #fff;
+            border: none;
+            border-radius: 30px; /* Rounded button */
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transform: scale(1); /* Stable state */
+            transition: all 0.3s ease; /* Smooth hover effect */
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5); /* Fancy shadow */
+            opacity: 0;
+            animation: fadeInUp 1s 1.1s forwards;
+        }
+
+        /* Hover effect for the Sign-Up button */
+        .signup-container button:hover {
+            background: linear-gradient(135deg, #0056b3, #00a6d6); /* Darker gradient on hover */
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.7); /* More intense shadow */
+            transform: scale(1.05); /* Slightly larger on hover */
+        }
+
+        .signup-container .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .signup-container .footer a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInUp 1s 1.3s forwards;
+        }
+
+        .signup-container .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Forgot password style */
+        .signup-container .login-option {
+            text-align: center;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s 1.5s forwards;
+        }
+
+        .signup-container .login-option a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signup-container .login-option a:hover {
+            text-decoration: underline;
+        }
+
+        /* Separate div for login option */
+        .login-container {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .login-container a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name">
+            
+            <!-- Contact Number and OTP in one row -->
+            <div class="flex-container">
+                <div>
+                    <label for="contact">Contact Number:</label>
+                    <input type="tel" id="contact" name="contact" placeholder="Enter your contact number">
+                </div>
+                <div>
+                    <label for="otp">OTP Verification:</label>
+                    <input type="text" id="otp" name="otp" placeholder="Enter OTP" maxlength="6">
+                </div>
+            </div>
+            
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address">
+            
+            <label for="university">University Name:</label>
+            <select id="university" name="university">
+                <option value="">Select your university</option>
+                <option value="university1">University 1</option>
+                <option value="university2">University 2</option>
+                <option value="university3">University 3</option>
+            </select>
+            
+            <label for="college">College Name:</label>
+            <select id="college" name="college">
+                <option value="">Select your college</option>
+                <option value="college1">College 1</option>
+                <option value="college2">College 2</option>
+                <option value="college3">College 3</option>
+            </select>
+            
+            <!-- Password and Confirm Password in one row -->
+            <div class="flex-container">
+                <div>
+                    <label for="password">Create Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password">
+                </div>
+                <div>
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
+                </div>
+            </div>
+            
+            <!-- Fancy Sign Up Button -->
+            <button type="submit">Sign Up</button>
+            
+            <!-- Forgot Password Option -->
+            <div class="footer">
+                <a href="#">Forgot your password?</a>
+            </div>
+        </form>
+
+        <!-- Separate Login Option Div -->
+        <div class="login-container">
+            <span>Already have an account? </span>
+            <a href="login.html">Login here</a>
+        </div>
+    </div>
+</body>
+</html>

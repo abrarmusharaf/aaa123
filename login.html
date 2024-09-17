@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Dashboard Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            background: #fff; /* Changed to white */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Stack login and signup containers vertically */
+        }
+
+        .login-container, .signup-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid #007bff; /* Blue border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            position: relative;
+            margin-bottom: 1rem; /* Adds spacing between login and signup containers */
+        }
+
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-container input[type="text"], .login-container input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-container label {
+            font-size: 0.9rem; /* Smaller font size for 'Remember me' */
+            margin: 0; /* Remove margin */
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff; /* Blue button */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .login-container .footer {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .login-container .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-container .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-container {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .signup-container a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-container a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form>
+            <label for="username">Username or Email Address:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username or email">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="remember-me" name="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+
+            <button type="submit">Login</button>
+
+            <div class="footer">
+                <a href="#">Forgot your password?</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="signup-container">
+        Don't have an account? <a href="#">Sign up</a>
+    </div>
+</body>
+</html>
