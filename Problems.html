@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Problems Selector</title>
+    <style>
+        :root {
+            --primary-color: #3f51b5; /* Deep Blue */
+            --secondary-color: #ffffff; /* White */
+            --text-color: #333;
+            --border-color: #ddd;
+            --hover-color: #9496a2; /* Darker Blue */
+            --background-color: #f5f5f5; /* Light Grey */
+            --card-bg: #ffffff; /* White background for cards */
+            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Card shadow */
+            --border-radius: 8px; /* Border radius for cards */
+            --transition-speed: 0.3s; /* Transition speed */
+            --dropdown-bg: #ffffff; /* White */
+            --dropdown-hover-bg: #f0f0f0; /* Light Grey */
+            --header-bg: var(--primary-color);
+            --header-text-color: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--header-bg);
+            color: var(--header-text-color);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header-left a, .header-right a {
+            color: var(--header-text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .header-left a:hover, .header-right a:hover {
+            background-color: var(--hover-color);
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 1rem;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 1rem;
+        }
+
+        main {
+            margin-top: 4.5rem; /* Ensure content starts below the header */
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .dropdown-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .dropdown select {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            background-color: var(--dropdown-bg);
+            box-shadow: var(--card-shadow);
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .dropdown select:focus {
+            border-color: var(--border-color);
+            outline: none;
+        }
+
+        .dropdown select option {
+            background-color: var(--dropdown-bg);
+        }
+
+        .dropdown select option:hover {
+            background-color: var(--dropdown-hover-bg);
+        }
+
+        .problems {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .problems h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .problems ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .problems ul li {
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 0.5rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+        }
+
+        .problems ul li:hover {
+            background-color: var(--hover-color);
+            border-color: var(--hover-color);
+            color: #333;
+        }
+
+        .problems ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .problems ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .problems .description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-left, .header-right {
+                gap: 0.5rem;
+            }
+
+            .search-bar input {
+                padding: 0.4rem;
+                font-size: 0.9rem;
+            }
+
+            .problems ul li {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <a href="#">Home</a>
+            <a href="#">Notifications</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." aria-label="Search">
+        </div>
+        <div class="header-right">
+            <a href="#">Profile</a>
+            <a href="#">Messages</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="dropdown-container">
+            <div class="dropdown">
+                <select id="categoryDropdown">
+                    <option value="">Select a Category</option>
+                    <option value="academic">Academic Issues</option>
+                    <option value="financial">Financial Problems</option>
+                    <option value="social">Social Issues</option>
+                    <option value="administrative">Administrative Issues</option>
+                    <option value="personal">Personal Challenges</option>
+                </select>
+            </div>
+            <div class="problems" id="problemsContainer">
+                <h2>Select a category to see related problems</h2>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const problemsData = {
+            academic: [
+                { title: 'Difficulty Understanding Course Material', description: 'Struggling with course content? Here are some resources and strategies to help you out.' },
+                { title: 'Exams Preparation Stress', description: 'Feeling overwhelmed by upcoming exams? Find study tips and stress management resources here.' },
+                { title: 'Academic Advising Issues', description: 'Need guidance on course selection or academic planning? Contact your advisor or use these tools.' }
+            ],
+            financial: [
+                { title: 'Tuition Fee Concerns', description: 'Worried about tuition fees? Explore financial aid options and payment plans.' },
+                { title: 'Budgeting and Financial Planning', description: 'Struggling with budgeting? Check out our financial planning tools and tips.' },
+                { title: 'Scholarship Applications', description: 'Looking for scholarships? Here are some application tips and available opportunities.' }
+            ],
+            social: [
+                { title: 'Making Friends and Socializing', description: 'Having trouble making connections? Discover events and groups to help you socialize.' },
+                { title: 'Roommate Conflicts', description: 'Facing issues with your roommate? Find advice and mediation services here.' },
+                { title: 'Campus Life Adjustments', description: 'Adjusting to campus life can be challenging. Here are resources to help with the transition.' }
+            ],
+            administrative: [
+                { title: 'Registrar Office Issues', description: 'Having trouble with registration or administrative processes? Get support and information here.' },
+                { title: 'Document Verification Problems', description: 'Issues with document submissions or verifications? Find the help you need here.' },
+                { title: 'Facility Management Complaints', description: 'Problems with campus facilities? Report issues and find resolution processes here.' }
+            ],
+            personal: [
+                { title: 'Mental Health Concerns', description: 'Struggling with mental health? Find counseling services and support resources here.' },
+                { title: 'Time Management Challenges', description: 'Having trouble managing your time? Discover tips and tools to improve your productivity.' },
+                { title: 'Homesickness and Adjustment', description: 'Feeling homesick or having trouble adjusting? Here are resources to help you cope.' }
+            ]
+        };
+
+        document.getElementById('categoryDropdown').addEventListener('change', (event) => {
+            const category = event.target.value;
+            const problemsContainer = document.getElementById('problemsContainer');
+
+            if (category && problemsData[category]) {
+                problemsContainer.innerHTML = `
+                    <h2>Problems in ${category.charAt(0).toUpperCase() + category.slice(1)}</h2>
+                    <ul>
+                        ${problemsData[category].map(problem => `
+                            <li>
+                                <strong>${problem.title}</strong>
+                                <p class="description">${problem.description}</p>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+            } else {
+                problemsContainer.innerHTML = '<h2>Select a category to see related problems</h2>';
+            }
+        });
+    </script>
+</body>
+
+</html>
